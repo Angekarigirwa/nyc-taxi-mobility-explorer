@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>NYC Taxi Dashboard</title>
+	<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+	<header>
+		<h1>NYC Taxi Dashboard</h1>
+		<div class="kpis">
+			<div class="kpi"><span id="kpi-count">0</span><label>Trips</label></div>
+			<div class="kpi"><span id="kpi-speed">0</span><label>Avg Speed (km/h)</label></div>
+			<div class="kpi"><span id="kpi-fpk">0</span><label>Avg Fare/km</label></div>
+		</div>
+	</header>
+	<main>
+		<section class="filters">
+			<h2>Filters</h2>
+			<div class="filter-grid">
+				<div class="filter-group">
+					<label for="start-date">Start Date:</label>
+					<input type="datetime-local" id="start-date" />
+				</div>
+				<div class="filter-group">
+					<label for="end-date">End Date:</label>
+					<input type="datetime-local" id="end-date" />
+				</div>
+				<div class="filter-group">
+					<label for="min-fare">Min Fare:</label>
+					<input type="number" id="min-fare" step="0.01" />
+				</div>
+				<div class="filter-group">
+					<label for="max-fare">Max Fare:</label>
+					<input type="number" id="max-fare" step="0.01" />
+				</div>
+				<div class="filter-group">
+					<label for="hour-filter">Hour:</label>
+					<select id="hour-filter">
+						<option value="">All Hours</option>
+						<option value="0">12 AM</option>
+						<option value="1">1 AM</option>
+						<option value="2">2 AM</option>
+						<option value="3">3 AM</option>
+						<option value="4">4 AM</option>
+						<option value="5">5 AM</option>
+						<option value="6">6 AM</option>
+						<option value="7">7 AM</option>
+						<option value="8">8 AM</option>
+						<option value="9">9 AM</option>
+						<option value="10">10 AM</option>
+						<option value="11">11 AM</option>
+						<option value="12">12 PM</option>
+						<option value="13">1 PM</option>
+						<option value="14">2 PM</option>
+						<option value="15">3 PM</option>
+						<option value="16">4 PM</option>
+						<option value="17">5 PM</option>
+						<option value="18">6 PM</option>
+						<option value="19">7 PM</option>
+						<option value="20">8 PM</option>
+						<option value="21">9 PM</option>
+						<option value="22">10 PM</option>
+						<option value="23">11 PM</option>
+					</select>
+				</div>
+				<div class="filter-group">
+					<button id="apply-filters">Apply Filters</button>
+					<button id="clear-filters">Clear</button>
+				</div>
+			</div>
+		</section>
+		
+		<section>
+			<h2>Speed by Hour</h2>
+			<canvas id="chart-speed" width="900" height="300"></canvas>
+		</section>
+		
+		<section>
+			<h2>Fare per KM by Weekday</h2>
+			<canvas id="chart-fare-weekday" width="900" height="300"></canvas>
+		</section>
+		
+		<section>
+			<h2>Top Pickup Zones</h2>
+			<canvas id="chart-pickup-zones" width="900" height="400"></canvas>
+		</section>
+		
+		<section>
+			<h2>Anomaly Detection</h2>
+			<div id="anomaly-stats"></div>
+			<div id="anomaly-list"></div>
+		</section>
+	</main>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+	<script src="app.js"></script>
+</body>
+</html>
+
+

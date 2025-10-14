@@ -1,0 +1,27 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, Arial, sans-serif; color: #0a0a0a; background: #f7f7fb; }
+header { background: #0d2b4c; color: #fff; padding: 16px 24px; }
+h1 { margin: 0 0 8px; font-size: 22px; }
+.kpis { display: flex; gap: 16px; }
+.kpi { background: rgba(255,255,255,0.12); padding: 8px 12px; border-radius: 8px; display: flex; align-items: baseline; gap: 8px; }
+.kpi span { font-weight: 700; font-size: 20px; }
+main { padding: 24px; max-width: 1080px; margin: 0 auto; }
+section { background: #fff; border-radius: 12px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 24px; }
+h2 { margin-top: 0; font-size: 18px; color: #0d2b4c; }
+
+.filters { margin-bottom: 32px; }
+.filter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 16px; }
+.filter-group { display: flex; flex-direction: column; gap: 4px; }
+.filter-group label { font-weight: 600; color: #0d2b4c; font-size: 14px; }
+.filter-group input, .filter-group select { padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; }
+.filter-group button { padding: 8px 16px; border: none; border-radius: 6px; font-size: 14px; cursor: pointer; }
+#apply-filters { background: #0d6efd; color: white; }
+#clear-filters { background: #6c757d; color: white; margin-left: 8px; }
+#apply-filters:hover { background: #0b5ed7; }
+#clear-filters:hover { background: #5c636a; }
+
+#anomaly-stats { background: #f8f9fa; padding: 12px; border-radius: 6px; margin-bottom: 16px; }
+#anomaly-list { max-height: 300px; overflow-y: auto; }
+.anomaly-item { background: #fff3cd; border: 1px solid #ffeaa7; padding: 8px 12px; margin-bottom: 8px; border-radius: 6px; font-size: 14px; }
+
+
