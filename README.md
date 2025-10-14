@@ -1,4 +1,4 @@
-# NYC Taxi Summative (Flask + SQLite + Custom Algorithms)
+# NYC Taxi Mobility Explorer
 
 A comprehensive data analysis dashboard for NYC taxi data with custom algorithms and interactive visualizations.
 
@@ -189,5 +189,3 @@ Delete `data/taxi.db` and re-run the ingestion script to start fresh.
 - Database queries are indexed for fast filtering
 - Frontend uses Chart.js for smooth animations
 - Memory usage optimized with streaming algorithms
-
-
