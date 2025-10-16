@@ -6,9 +6,7 @@ from sqlalchemy import select, func, and_, between
 from .models import Trip
 from .algorithms import TopKFrequent, MedianCalculator, AnomalyDetector
 
-
 api_bp = Blueprint("api", __name__)
-
 
 def _get_session():
 	return current_app.session_factory()
