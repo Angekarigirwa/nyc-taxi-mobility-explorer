@@ -10,7 +10,6 @@ import pandas as pd
 from datetime import datetime, timedelta
 import math
 
-
 # NYC bounds (Manhattan + parts of other boroughs)
 NYC_BOUNDS = {
     "lat_min": 40.4774,
@@ -39,7 +38,6 @@ RUSH_HOURS = [7, 8, 9, 16, 17, 18, 19]
 # Weekend vs weekday patterns
 WEEKEND_HOURS = [0, 1, 2, 3, 4, 5, 6, 22, 23]  # More activity late night/early morning
 
-
 def haversine_distance(lat1, lon1, lat2, lon2):
     """Calculate distance between two points in kilometers."""
     R = 6371.0088  # Earth's radius in km
@@ -49,7 +47,6 @@ def haversine_distance(lat1, lon1, lat2, lon2):
     
     a = math.sin(dphi/2)**2 + math.cos(phi1) * math.cos(phi2) * math.sin(dlam/2)**2
     return 2 * R * math.asin(math.sqrt(a))
-
 
 def generate_coordinates():
     """Generate realistic pickup/dropoff coordinates."""
@@ -75,7 +72,6 @@ def generate_coordinates():
         )
     
     return pickup, dropoff
-
 
 def generate_trip_datetime(base_date, is_weekend=False):
     """Generate realistic trip datetime."""
@@ -110,7 +106,6 @@ def generate_trip_datetime(base_date, is_weekend=False):
     
     return pickup_time, dropoff_time
 
-
 def generate_fare_data(distance_km, duration_minutes, is_weekend=False, is_rush_hour=False):
     """Generate realistic fare data."""
     # Base fare
@@ -138,7 +133,6 @@ def generate_fare_data(distance_km, duration_minutes, is_weekend=False, is_rush_
     
     return round(fare_amount, 2), round(tip_amount, 2)
 
-
 def generate_sample_data(num_trips=10000, start_date=None):
     """Generate sample taxi trip data."""
     if start_date is None:
@@ -162,7 +156,7 @@ def generate_sample_data(num_trips=10000, start_date=None):
         # Skip very short or very long trips
         if distance_km < 0.1 or distance_km > 50:
             continue
-        
+    
         # Generate datetime
         pickup_time, dropoff_time = generate_trip_datetime(trip_date, is_weekend)
         duration_minutes = (dropoff_time - pickup_time).total_seconds() / 60
@@ -197,7 +191,6 @@ def generate_sample_data(num_trips=10000, start_date=None):
     
     return pd.DataFrame(trips)
 
-
 def main():
     """Generate sample data and save to CSV."""
     print("Generating sample NYC taxi data...")
@@ -217,7 +210,6 @@ def main():
     print(f"Date range: {df['tpep_pickup_datetime'].min()} to {df['tpep_pickup_datetime'].max()}")
     print(f"Fare range: ${df['fare_amount'].min():.2f} to ${df['fare_amount'].max():.2f}")
     print(f"Distance range: {df.apply(lambda x: haversine_distance(x['pickup_latitude'], x['pickup_longitude'], x['dropoff_latitude'], x['dropoff_longitude']), axis=1).min():.2f} to {df.apply(lambda x: haversine_distance(x['pickup_latitude'], x['pickup_longitude'], x['dropoff_latitude'], x['dropoff_longitude']), axis=1).max():.2f} km")
-
 
 if __name__ == "__main__":
     main()
