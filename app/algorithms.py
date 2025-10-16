@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from typing import List, Tuple, Any, Hashable
 
-
 class MinHeap:
 	"""Custom min-heap implementation without using heapq library"""
 	
