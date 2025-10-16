@@ -7,11 +7,9 @@ from datetime import datetime
 import pandas as pd
 from sqlalchemy import create_engine
 
-
 RAW_CSV = os.environ.get("RAW_CSV", "data/train.csv")
 DB_URL = os.environ.get("DATABASE_URL", "sqlite:///./data/taxi.db")
 LOG_FILE = os.environ.get("CLEAN_LOG", "logs/cleaning_log.jsonl")
-
 
 NYC_BOUNDS = {
 	"lat_min": 40.4774,
@@ -20,13 +18,11 @@ NYC_BOUNDS = {
 	"lng_max": -73.7004,
 }
 
-
 def within_nyc(lat: float, lng: float) -> bool:
 	return (
 		NYC_BOUNDS["lat_min"] <= lat <= NYC_BOUNDS["lat_max"]
 		and NYC_BOUNDS["lng_min"] <= lng <= NYC_BOUNDS["lng_max"]
 	)
-
 
 def haversine_km(lat1, lon1, lat2, lon2) -> float:
 	R = 6371.0088
@@ -36,16 +32,13 @@ def haversine_km(lat1, lon1, lat2, lon2) -> float:
 	a = math.sin(dphi/2)**2 + math.cos(phi1)*math.cos(phi2)*math.sin(dlam/2)**2
 	return 2 * R * math.asin(math.sqrt(a))
 
-
 def is_rush(hour: int) -> int:
 	return 1 if hour in {7, 8, 9, 16, 17, 18} else 0
-
 
 def log_exclusion(record: dict) -> None:
 	os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)
 	with open(LOG_FILE, "a", encoding="utf-8") as f:
 		f.write(json.dumps(record) + "\n")
-
 
 def clean_and_ingest() -> None:
 	if not os.path.exists(RAW_CSV):
@@ -152,8 +145,5 @@ def clean_and_ingest() -> None:
 	clean_df.to_sql("trips", engine, if_exists="append", index=False)
 	print(f"Ingested {len(clean_df)} rows into database at {DB_URL}")
 
-
 if __name__ == "__main__":
 	clean_and_ingest()
-
-
