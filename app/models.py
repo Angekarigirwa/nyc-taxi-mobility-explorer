@@ -3,22 +3,18 @@ from __future__ import annotations
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy import Integer, Float, String, DateTime
 
-
 class Base(DeclarativeBase):
 	pass
-
 
 class Vendor(Base):
 	__tablename__ = "vendors"
 	id: Mapped[int] = mapped_column(Integer, primary_key=True)
 	name: Mapped[str] = mapped_column(String(64), nullable=False)
 
-
 class PaymentType(Base):
 	__tablename__ = "payment_types"
 	id: Mapped[int] = mapped_column(Integer, primary_key=True)
 	label: Mapped[str] = mapped_column(String(32), nullable=False)
-
 
 class Trip(Base):
 	__tablename__ = "trips"
