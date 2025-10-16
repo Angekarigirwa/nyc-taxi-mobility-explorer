@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-"""
-Simple test script to verify the application works.
-"""
+"""Simple test script to verify the application works."""
 
 import os
 import sys
