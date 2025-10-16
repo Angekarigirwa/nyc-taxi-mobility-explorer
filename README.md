@@ -142,7 +142,6 @@ python -m http.server 8000
 ├── requirements.txt        # Python dependencies
 └── run.py                 # Application entry point
 ```
-
 ## 5-Minute Video Outline
 
 ### 1. System Overview (1 min)
