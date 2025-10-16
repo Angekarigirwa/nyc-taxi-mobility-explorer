@@ -38,5 +38,3 @@ def create_app() -> Flask:
 		return "ok", 200
 
 	return app
-
-
